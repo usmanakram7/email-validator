@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Email Validator</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>Email Validation</header>
+
+      <form action="#">
+        <div class="field">
+          <input
+            onkeyup="check()"
+            autocomplete="off"
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+          />
+          <div class="icons">
+            <i class="firstArrow fa-solid fa-exclamation"></i>
+            <i class="secondArrow fa-solid fa-check"></i>
+          </div>
+        </div>
+      </form>
+
+      <div class="errorText">Please enter a valid email address</div>
+      <button>Submit</button>
+    </div>
+
+    <script>
+      const email = document.querySelector("#email");
+      const icon1 = document.querySelector(".firstArrow");
+      const icon2 = document.querySelector(".secondArrow");
+      const error = document.querySelector(".errorText");
+      const btn = document.querySelector("button");
+
+      let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      function check() {
+        if (email.value.match(regExp)) {
+          email.style.borderColor = "#27ae60";
+          email.style.background = "#aefaf1";
+          icon1.style.display = "none";
+          icon2.style.display = "block";
+          error.style.display = "none";
+          btn.style.display = "block";
+        } else {
+          email.style.borderColor = "red";
+          email.style.background = "#";
+          icon1.style.display = "block";
+          icon2.style.display = "none";
+          error.style.display = "block";
+          btn.style.display = "none";
+        }
+        if (email.value == "") {
+          email.style.borderColor = "lightgrey";
+          email.style.backgroundColor = "#fff";
+          icon.style.display = "none";
+          icon2.style.display = "none";
+          error.style.display = "none";
+          btn.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
